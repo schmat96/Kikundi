@@ -1,4 +1,5 @@
 <?php
+ interface ProjectPoolImpl{
     public function addProject();
     public function deleteProject( $project );
     public function getProjects( $project );
@@ -7,4 +8,5 @@
     public function isMemberBySessionID( $sessionID );
     public function getName();
     public function analyzeProjects();
+	}
 ?>
