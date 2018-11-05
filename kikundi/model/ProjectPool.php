@@ -1,8 +1,10 @@
 <?php
 
+require_once 'interfaces/ProjectPoolImpl.php';
 
 /**
  * Class ProjectPool
+ * The Project class contains all the information a project can hold.
  */
 class ProjectPool implements ProjectPoolImpl
 {
