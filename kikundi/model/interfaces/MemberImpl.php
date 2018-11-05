@@ -1,4 +1,9 @@
 <?php
+
+    /**
+     * author: Keya Kersting
+     * date: 05.11.2018
+     */
     interface MemberImpl {
         /**
          * returns a hash (for Admins) as a string
