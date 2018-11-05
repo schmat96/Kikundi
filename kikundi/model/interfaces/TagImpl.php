@@ -1,4 +1,8 @@
 <?php
+    /**
+     * author: Keya Kersting
+     * date: 05.11.2018
+     */
     interface TagImpl{
         /**
          * get the name of the tag
