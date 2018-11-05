@@ -1,7 +1,19 @@
 <?php
     interface ProjectImpl{
+        /**
+         * get the name of the project
+         */
         public function getName();
+
+        /**
+         * get the description of the project
+         */
         public function getDescription();
+
+        /**
+         * get the tags of the project as an array
+         * of tags
+         */
         public function getTags();
     }
 ?>
