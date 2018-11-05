@@ -1,1 +1,6 @@
 /* initial css */
+
+body {
+    color: white !important;
+    background-color: #343434 !important;
+}
