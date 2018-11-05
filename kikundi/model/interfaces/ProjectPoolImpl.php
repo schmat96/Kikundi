@@ -13,7 +13,7 @@
         /**
          * get all projects as an array from the pool
          */
-        public function getProjects( $project );
+        public function getProjects();
 
         /**
          * assign a new admin (THIS FUNCTION EITHER
