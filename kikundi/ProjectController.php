@@ -8,6 +8,7 @@ session_start();
 class ProjectController {
 
 	public static function getAllPools() {
+	 //$_SESSION['allPools'] = array();
 		if (empty($_SESSION['allPools'])) {
 			$_SESSION['allPools'] = array();
 		}
@@ -20,6 +21,6 @@ class ProjectController {
 }
 
 var_dump(ProjectController::getAllPools());
-ProjectController::addProjectPool("Super", "Name", "Admin");
-var_dump(ProjectController::getAllPools());
+//ProjectController::addProjectPool("Super", "Name", "Admin");
+//var_dump(ProjectController::getAllPools());
 ?>
