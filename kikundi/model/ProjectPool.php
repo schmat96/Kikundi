@@ -19,8 +19,11 @@ class ProjectPool implements ProjectPoolImpl
     /**
      * Add a new Project to the pool
      */
-    public function addProject($project)
+    public function addProject($project, $tags)
     {
+        //stub: TODO: remove once form data is being fetched
+        $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
+        $project = new Project(5, 2, 5, "TheJavaProject", "This is a project description. It's all about ", $tags);
         array_push($this->projects, $project);
         // try "$this->projects[] = $project;" to boost performance
     }
