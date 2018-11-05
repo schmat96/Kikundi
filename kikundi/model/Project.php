@@ -1,6 +1,12 @@
 <?php
 
-class Project
+require_once 'Tag.php';
+
+/**
+ * Class Project
+ * The Project class contains all the information a project can hold.
+ */
+class Project implements ProjectImpl
 {
 
     private $id;
@@ -31,4 +37,17 @@ class Project
     public function getTags() {
         return $this->tags;
     }
+
+    /**
+     * Check if a given tag is listed for the project.
+     * @param $tag
+     * @return string
+     */
+    public function containsTag($tag) {
+        foreach($this->tags as $value) {
+            return $value.equals($tag);
+        }
+    }
+
+    // https://stackoverflow.com/questions/13980883/how-to-separate-html-from-php-files
 }
