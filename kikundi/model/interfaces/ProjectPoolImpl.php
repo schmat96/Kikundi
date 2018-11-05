@@ -1,9 +1,14 @@
 <?php
+
+    /**
+     * author: Keya Kersting
+     * date: 05.11.2018
+     */
     interface ProjectPoolImpl{
         /**
          * Add a new Project to the pool
          */
-        public function addProject($project);
+        public function addProject( $project, $tags );
 
         /**
          * Delete a project from the pool
@@ -13,7 +18,7 @@
         /**
          * get all projects as an array from the pool
          */
-        public function getProjects( $project );
+        public function getProjects();
 
         /**
          * assign a new admin (THIS FUNCTION EITHER

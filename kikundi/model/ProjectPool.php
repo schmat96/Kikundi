@@ -11,42 +11,81 @@ class ProjectPool implements ProjectPoolImpl
 
     private $id;
     private $name;
-	private $admin;
+    private $projects;
+    private $admin;
+    private $members;
 
 
-    public function __construct($id, $name, $admin) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->admin = $admin;
+    /**
+     * Add a new Project to the pool
+     */
+    public function addProject($project, $tags)
+    {
+        //stub: TODO: remove once form data is being fetched
+        $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
+        $project = new Project(5, 2, 5, "TheJavaProject", "This is a project description. It's all about ", $tags);
+        array_push($this->projects, $project);
+        // try "$this->projects[] = $project;" to boost performance
     }
-	
-	public function print() {
-		return ($id.$name);
-	}
-	
-	public function addProject() {
-		
-	}
-    public function deleteProject( $project ) {
-		
-	}
-    public function getProjects( $project ) {
-		
-	}
-    public function assignNewAdmin( $member ) {
-		
-	}
-    public function getAdmin() {
-		
-	}
-    public function isMemberBySessionID( $sessionID ) {
-		
-	}
-    public function getName() {
-		
-	}
-    public function analyzeProjects() {
-		
-	}
-	
+
+    /**
+     * Delete a project from the pool
+     */
+    public function deleteProject($project)
+    {
+        // TODO: Implement deleteProject() method.
+    }
+
+    /**
+     * get all projects as an array from the pool
+     */
+    public function getProjects()
+    {
+        return $this->projects;
+    }
+
+    /**
+     * assign a new admin (THIS FUNCTION EITHER
+     * HAS TO BE DEBATED HEAVILY OR REMOVED)
+     *
+     * DO NOT IMPLEMENT THIS!!!
+     */
+    public function assignNewAdmin($member)
+    {
+        // NOT!! TODO: Implement assignNewAdmin() method.
+    }
+
+    /**
+     * get the admin of the pool
+     */
+    public function getAdmin()
+    {
+        // TODO: Implement getAdmin() method.
+    }
+
+    /**
+     * get wether the user with the corresponding sessionID
+     * is a valid user of the pool
+     */
+    public function isMemberBySessionID($sessionID)
+    {
+        // TODO: Implement isMemberBySessionID() method.
+    }
+
+    /**
+     * get the name of the pool
+     */
+    public function getName()
+    {
+        // TODO: Implement getName() method.
+    }
+
+    /**
+     * analyze the pool and distribute the memebers
+     * to the projects
+     */
+    public function analyzeProjects()
+    {
+        // TODO: Implement analyzeProjects() method.
+    }
 }
