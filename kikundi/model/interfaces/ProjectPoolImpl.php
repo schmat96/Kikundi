@@ -1,4 +1,9 @@
 <?php
+
+    /**
+     * author: Keya Kersting
+     * date: 05.11.2018
+     */
     interface ProjectPoolImpl{
         /**
          * Add a new Project to the pool
