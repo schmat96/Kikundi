@@ -22,7 +22,7 @@
          * A member (the session-owner) can join a projectpool
          * with the preshared hash by the admin of that pool
          */
-        public function joinProject( $hash );
+        public function joinProjectPool( $hash );
 
     }
 ?>
