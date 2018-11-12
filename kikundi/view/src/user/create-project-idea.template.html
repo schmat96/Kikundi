@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="user/create-project-idea.template.css">
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 main-container">
+            <h1>New Project-Idea</h1>
+            <form>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xl-6" id="left-input">
+                            <h3>Project name</h3>
+                            <input class="text-input form-control full-width">
+                            <h3>Project description</h3>
+                            <textarea class="text-input form-control full-width"></textarea>
+                        </div>
+                        <div class="col-xl-6" id="right-input">
+                            <h3>Project-Settings</h3>
+                            <div class="full-width range-holder">
+                                <label for="difficulty">Difficulty</label>
+                                <input type="range" class="custom-range" min="0" max="10" id="difficulty">
+                            </div>
+                            <div class="full-width range-holder">
+                                <label for="size">Size</label>
+                                <input type="range" class="custom-range" min="0" max="10" id="size">
+                            </div>
+                        </div>
+
+                        <div class="center-text button-holder">
+                            <button type="submit" class="create-project">Create project</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

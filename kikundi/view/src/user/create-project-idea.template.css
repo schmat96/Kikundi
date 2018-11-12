@@ -1,0 +1,55 @@
+.main-container {
+    margin-top: 15px;
+}
+
+#left-input {
+    border-right: solid white;
+    border-top: solid white;
+    border-bottom: solid white;
+}
+
+#right-input {
+    border-top: solid white;
+    border-bottom: solid white;
+}
+
+h3 {
+    font-size: 15pt;
+    margin-top: 10px;
+}
+
+textarea {
+    height: 350px !important;
+    margin: 20px 0;
+}
+
+button {
+    background-color:#343434;
+    border-radius:42px;
+    border:2px solid #ffffff;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:15pt;
+    padding: 3pt 13pt;
+}
+button:hover {
+    background-color:#ffffff;
+    color: black;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.button-holder {
+    text-align: center;
+}
+
+.range-holder {
+    margin-top: 20px;
+}
+
+.create-project {
+    margin: 20px auto;
+}
