@@ -1,2 +1,3 @@
 # Gitignore
 .idea/*
+*/.idea/*
