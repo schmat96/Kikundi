@@ -21,14 +21,13 @@ class MemberController implements MembercontrollerImpl
 
     public function joinProjectPool($hash)
     {
-        // TODO: Implement joinProjectPool() method.
-        /*
-         * Passing data has to be declared
-         *
-         * foreach($projectpools as &$projectpool){
-         *      if($hash==$projectpool.id){
-         *          $projectPool.add(this)
-         * }
-         */
+        // TODO: Verify joinProjectPool() method.
+
+          foreach($_SESSION['allPools'] as &$projectPool){
+               if($hash==$projectPool.id){
+                   $projectPool.add(this);
+               }
+          }
+         //
     }
 }
