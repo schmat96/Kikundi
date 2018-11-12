@@ -1,9 +1,12 @@
 <?php
 
 require_once 'model/ProjectPool.php';
+require_once 'controller/TagController.php';
+require_once 'model/Tag.php';
 
 session_id(100);
 session_start();
+
 
 class ProjectController {
 
@@ -41,11 +44,19 @@ class ProjectController {
     }
 
     public static function getNotUsedID() {
-        if (empty($_SESSION['allPools'])) {
+        if (empty($_SESSION['id'])) {
             $_SESSION['id'] = 0;
         }
         $_SESSION['id']++;
         return $_SESSION['id'];
+    }
+
+    public static function getNotUsedTagID() {
+        if (empty($_SESSION['idTag'])) {
+            $_SESSION['idTag'] = 0;
+        }
+        $_SESSION['idTag']++;
+        return $_SESSION['idTag'];
     }
 
 
@@ -103,22 +114,25 @@ class ProjectController {
 echo "<h1>Version 1.00 Beta</h1>";
 echo "There are no error validations or error feedbacks currently";
 
-//ProjectController::clearAllPools();
-
 if (isset($_GET['testing'])) {
     if ($_GET['testing']=='reset') {
         ProjectController::clearAllPools();
     }
-    echo "<h2>TESTING: All ADMIN HASHCODES</h2>";
-    ProjectController::getAllAdminHashCodes();
-    echo "<br>";
-    echo "<h2>TESTING: All MEMBER HASHCODES</h2>";
-    ProjectController::getAllMembersHashCodes();
-    echo "<br>";
-    echo "<h2>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h2>";
-    var_dump(ProjectController::getAllPools());
+    else if ($_GET['testing']=='all') {
+        require_once 'controller/TagControllerTest.php';
+    } else {
+        echo "<h2>TESTING: All ADMIN HASHCODES</h2>";
+        ProjectController::getAllAdminHashCodes();
+        echo "<br>";
+        echo "<h2>TESTING: All MEMBER HASHCODES</h2>";
+        ProjectController::getAllMembersHashCodes();
+        echo "<h2>TESTING: All TAGS</h2>";
+        var_dump(TagController::getAllTags());
+        echo "<br>";
+        echo "<h2>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h2>";
+        var_dump(ProjectController::getAllPools());
+    }
+
 }
 
-//ProjectController::addProjectPool("Super", "Name", "Admin");
-//var_dump(ProjectController::getAllPools());
 ?>

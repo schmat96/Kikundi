@@ -11,6 +11,7 @@ class Tag {
     public function __construct($name)
     {
         $this->name = $name;
+        $this->id = ProjectController::getNotUsedTagID();
     }
 
     public function getName() {

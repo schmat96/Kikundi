@@ -28,6 +28,15 @@
                     case 'createProject':
                         $this->createProject();
                         break;
+                    case 'addTag':
+                        require_once('../ProjectController.php');
+                        TagController::saveTagInDb($this->provided['tag']);
+                        break;
+                    case 'checkTag':
+                        require_once('../ProjectController.php');
+                        echo "<br>";
+                        var_dump(TagController::searchInDb($this->provided['tag']));
+                        break;
                     case 'joinProjectPool':
                         break;
                     case 'likeProject':
