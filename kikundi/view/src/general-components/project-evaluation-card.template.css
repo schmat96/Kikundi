@@ -1,0 +1,24 @@
+.projectEvaluation{
+    margin: 0.5rem;
+    background-color: white;
+    color: black;
+}
+
+.projectEvaluation hr{
+    border-color: black !important;
+}
+
+.col-md-8{
+    border-right: black solid 1px;
+}
+
+.project-tags{
+    border: black solid 1px;
+    border-radius: 7px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.tag-row{
+    margin: 0.5rem;
+}
