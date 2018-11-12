@@ -53,3 +53,7 @@ button:hover {
 .create-project {
     margin: 20px auto;
 }
+
+.button-holder {
+    float: right;
+}
