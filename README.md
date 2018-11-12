@@ -24,15 +24,15 @@ If you need to reset the Pools you can call
 http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
 ```
 
-##Testing
+## Testing
 
-###How to Test:
+### How to Test:
 Call:
 ```
 http://localhost/kikundi/kikundi/ProjectController.php?testing=all
 ```
 
-###How to implement a new Test:
+### How to implement a new Test:
 1) Create a new File Named: TestClass+Test f.E. TagControllerTest which tests the TagController.
 2) Create a new Class with the name TestClass+Test a good example can be found under [Here](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/TagControllerTest.php)
 3) Make sure you call all Test Methods in the constructur, add error-msg to the array and have the following lines at the end of your TestClass:
