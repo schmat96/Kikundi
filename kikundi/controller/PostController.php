@@ -10,20 +10,15 @@
 
         public function chooseFunction(){
             if (isset($this->provided['postLabel'])) {
-                echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it yourself 
-                you lazy ass in kikundi/controller/PostController.php <br>";
+                echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it for yourself 
+                in kikundi/controller/PostController.php <br>";
                 switch($this->provided['postLabel']){
                     case 'createProjectPool':
                         require_once('../ProjectController.php');
                         ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['name'], $this->provided['adminName']);
                         break;
                     case 'registerMember':
-                        require_once('../ProjectController.php');
-                        $hashCode = $this->provided['hashCode'];
-                        $name = $this->provided['name'];
-                        $sessionID = $this->provided['sessionID'];
-                        $member = new Member(ProjectController::getNotUsedID(), $name, $sessionID, "Member");
-                        ProjectController::joinPool($member, $hashCode);
+                        $this->joinProjectPool();
                         break;
                     case 'createProject':
                         $this->createProject();
@@ -34,7 +29,7 @@
                         break;
                     case 'checkTag':
                         require_once('../ProjectController.php');
-                        echo "<br>";
+                        echo "<h2>All the Tags starting with ".$this->provided['tag']."</h2>";
                         var_dump(TagController::searchInDb($this->provided['tag']));
                         break;
                     case 'joinProjectPool':
@@ -79,7 +74,12 @@
         }
 
         private function joinProjectPool() {
-
+            require_once('../ProjectController.php');
+            $hashCode = $this->provided['hashCode'];
+            $name = $this->provided['name'];
+            $sessionID = $this->provided['sessionID'];
+            $member = new Member(ProjectController::getNotUsedID(), $name, $sessionID, "Member");
+            ProjectController::joinPool($member, $hashCode);
         }
 
         private function likeProject() {
@@ -92,10 +92,9 @@
     }
 
 
-    /*switch($_SESSION['postlabel']){
-        case '':
-            break;
-    }*/
+/**
+ * This will call the PostController and set the Provided Array (either GET or POST)
+ */
 $pc = new PostController($provided);
 $pc->setPost($_GET);
 $pc->chooseFunction();

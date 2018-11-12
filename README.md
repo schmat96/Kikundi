@@ -9,6 +9,11 @@
 
 ## Usage so far
 
+If you need to reset the session variables you can call:
+```
+http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
+```
+
 ### Common Usage
 
 **All following Requests are Made with GET this can easily be changed by changing the method Call 'setPost()' of the PostController found at the end of [this File](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/PostController.php).**
@@ -25,14 +30,9 @@ Now you can create a new Member which needs to tell the application in which Poo
 ```
 http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=registerMember&hashCode=1KIKMax&name=NeuerMember&sessionID=111
 ```
-Congrats! You created a new Member! Call now this link and create a new project. The  sessionID must be set to the MembersID, found under ProjectController with GET['testing'] set to anything.
+Congrats! You created a new Member! Call now this link and create a new project. The sessionID must be set to the MembersID, found under ProjectController with GET['testing'] set to anything.
 ```
 http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=createProject&maxMembers=4&minMembers=4&difficulty=3&name=asd&description=doppelASD&tags=nope&sessionID=3KIKNeuerMember
-```
-
-If you need to reset the Pools you can call
-```
-http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
 ```
 
 ### Tags Usage

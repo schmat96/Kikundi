@@ -15,7 +15,7 @@ class ProjectController {
      * Used for TESTING #TODO Remove on release
      */
     public static function clearAllPools() {
-        $_SESSION['allPools'] = array();
+        session_unset();
     }
 
     /**
