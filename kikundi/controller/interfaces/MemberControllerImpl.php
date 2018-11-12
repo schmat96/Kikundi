@@ -18,11 +18,5 @@
          */
         public function approve( $project, $member );
 
-        /**
-         * A member (the session-owner) can join a projectpool
-         * with the preshared hash by the admin of that pool
-         */
-        public function joinProjectPool( $hash );
-
     }
 ?>
