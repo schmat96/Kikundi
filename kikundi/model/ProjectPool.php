@@ -16,6 +16,12 @@ class ProjectPool implements ProjectPoolImpl
     private $members;
 
 
+    //TODO: Constructor has to be modified
+    public function __construct()
+    {
+        $this->projects = array();
+    }
+
     /**
      * Add a new Project to the pool
      */
@@ -87,5 +93,13 @@ class ProjectPool implements ProjectPoolImpl
     public function analyzeProjects()
     {
         // TODO: Implement analyzeProjects() method.
+    }
+
+    /**
+     * checks wether this project pool has the given ID or not
+     */
+    public function hasID($id)
+    {
+        return ($this->id === $id);
     }
 }

@@ -1,11 +1,20 @@
 <?php
     class PostController {
         public function chooseFunction(){
-            switch($_SESSION['postlabel']){
+            switch($_POST['postlabel']){
                 case 'joinProjectPool':
-                    
+                    break;
+                case 'likeProject':
+                    break;
+                case 'approve':
+                    break;
+                case 'joinProjectPool':
+                    break;
+                default:
+
             }
         }
+
     }
 
 
