@@ -25,11 +25,11 @@ class Member implements MemberImpl{
      */
     public function getHashCode()
     {
-        // TODO: Implement getHashCode() method.
+        return $this->id."#".$this->name;
     }
 
     public function getName()
     {
-        // TODO: Implement getName() method.
+        return $this->name;
     }
 }
