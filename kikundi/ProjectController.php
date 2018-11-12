@@ -99,19 +99,23 @@ class ProjectController {
 
 }
 
+
+echo "<h1>Version 1.00 Beta</h1>";
+echo "There are no error validations or error feedbacks currently";
+
 //ProjectController::clearAllPools();
 
 if (isset($_GET['testing'])) {
     if ($_GET['testing']=='reset') {
         ProjectController::clearAllPools();
     }
-    echo "<h1>TESTING: All ADMIN HASHCODES</h1>";
+    echo "<h2>TESTING: All ADMIN HASHCODES</h2>";
     ProjectController::getAllAdminHashCodes();
     echo "<br>";
-    echo "<h1>TESTING: All MEMBER HASHCODES</h1>";
+    echo "<h2>TESTING: All MEMBER HASHCODES</h2>";
     ProjectController::getAllMembersHashCodes();
     echo "<br>";
-    echo "<h1>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h1>";
+    echo "<h2>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h2>";
     var_dump(ProjectController::getAllPools());
 }
 
