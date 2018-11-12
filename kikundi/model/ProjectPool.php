@@ -102,4 +102,13 @@ class ProjectPool implements ProjectPoolImpl
     {
         return ($this->id === $id);
     }
+
+    /**
+     * register a new member into the pool with the
+     * pre-shared key (hashCode) by the admin
+     */
+    public function registerMember($member, $hashCode)
+    {
+        // TODO: Implement registerMember() method.
+    }
 }
