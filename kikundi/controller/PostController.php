@@ -10,6 +10,8 @@
 
         public function chooseFunction(){
             if (isset($this->provided['postLabel'])) {
+                echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it yourself 
+                you lazy ass in kikundi/controller/PostController.php <br>";
                 switch($this->provided['postLabel']){
                     case 'createProjectPool':
                         require_once('../ProjectController.php');

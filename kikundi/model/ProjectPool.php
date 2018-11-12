@@ -75,9 +75,6 @@ class ProjectPool implements ProjectPoolImpl
     public function isMemberBySessionID($sessionID)
     {
         foreach ($this->members as $member) {
-            echo "<br>";
-            echo "comparing:".$member->getHashCode()." TO ".$sessionID;
-            echo "<br>";
             if ($member->getHashCode() == $sessionID) {
                 return true;
             }
