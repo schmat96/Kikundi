@@ -1,21 +1,44 @@
 <?php
     class PostController {
-        public function chooseFunction(){
-            switch($_POST['postlabel']){
-                case 'createProjectPool':
-                    break;
-                case 'createProject':
-                    $this->createProject();
-                    break;
-                case 'joinProjectPool':
-                    break;
-                case 'likeProject':
-                    break;
-                case 'approve':
-                    break;
-                default:
 
+        private $provided;
+
+        public function setPost($provided) {
+            $this->provided = $provided;
+        }
+
+
+        public function chooseFunction(){
+            if (isset($this->provided['postLabel'])) {
+                switch($this->provided['postLabel']){
+                    case 'createProjectPool':
+                        require_once('../ProjectController.php');
+                        ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['name'], $this->provided['adminName']);
+                        break;
+                    case 'registerMember':
+                        require_once('../ProjectController.php');
+                        $hashCode = $this->provided['hashCode'];
+                        $name = $this->provided['name'];
+                        $sessionID = $this->provided['sessionID'];
+                        $member = new Member(ProjectController::getNotUsedID(), $name, $sessionID, "Member");
+                        ProjectController::joinPool($member, $hashCode);
+                        break;
+                    case 'createProject':
+                        $this->createProject();
+                        break;
+                    case 'joinProjectPool':
+                        break;
+                    case 'likeProject':
+                        break;
+                    case 'approve':
+                        break;
+                    default:
+                        echo "no post with that label found!";
+                }
+            } else {
+                echo "You should not be here!";
             }
+
         }
 
         private function createProjectPool() {
@@ -23,13 +46,25 @@
         }
 
         private function createProject() {
-            $maxMembers = $_POST['maxMembers'];
-            $minMembers = $_POST['minMembers'];
-            $difficulty = $_POST['difficulty'];
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $tags = $_POST['tags'];
-            new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
+            require_once('../model/Project.php');
+            require_once('../ProjectController.php');
+            $maxMembers = $this->provided['maxMembers'];
+            $minMembers = $this->provided['minMembers'];
+            $difficulty = $this->provided['difficulty'];
+            $name = $this->provided['name'];
+            $description = $this->provided['description'];
+            //#TODO REMOVE ONCE FETCHED
+            //$tags = $this->provided['tags'];
+            $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
+            $project = new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
+            foreach (ProjectController::getAllPools() as $pool) {
+                if ($pool->isMemberBySessionID($this->provided['sessionID'])) {
+                    if ($pool->addProject($project, $tags)) {
+                        echo "Project to ProjectPool added!";
+                    }
+                }
+            }
+
         }
 
         private function joinProjectPool() {
@@ -50,5 +85,8 @@
         case '':
             break;
     }*/
+$pc = new PostController($provided);
+$pc->setPost($_GET);
+$pc->chooseFunction();
     
 ?>

@@ -6,61 +6,32 @@ One Paragraph of project description goes here
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Usage so far
 
-What things you need to install the software and how to install them
-
+You can call this link to add a new Admin with the given Name:
 ```
-Give examples
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=createProjectPool&sessionID=1&name=MaxesPool&adminName=Max
+```
+This will create a new Admin, if you need to double check this call:
+```
+http://localhost/kikundi/kikundi/ProjectController.php?testing=true
+```
+Now you can create a new Member which needs to tell the application in which Pool (or rather the admin hash code, found in the link above) he wants to join (hashCode=***)
+```
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=registerMember&hashCode=1KIKMax&name=NeuerMember&sessionID=111
+```
+Congrats! You created a new Member! Call now this link and create a new project. The  sessionID must be set to the MembersID, found under ProjectController with GET['testing'] set to anything.
+```
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=createProject&maxMembers=4&minMembers=4&difficulty=3&name=asd&description=doppelASD&tags=nope&sessionID=3KIKNeuerMember
 ```
 
+If you need to reset the Pools you can call
+```
+http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
+```
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'interfaces/MemberImpl.php';
+
 /**
  * Class Member
  * @author ramsi 05.11.18
@@ -12,12 +14,11 @@ class Member implements MemberImpl{
     private $sessionId;
     private $role;
 
-    public function _construct($id, $name, $sessionId, $role){
+    public function __construct($id, $name, $sessionId, $role){
         $this->id = $id;
         $this->name = $name;
         $this->sessionId = $sessionId;
         $this->role = $role;
-
     }
 
     /**
@@ -25,7 +26,7 @@ class Member implements MemberImpl{
      */
     public function getHashCode()
     {
-        return $this->id."#".$this->name;
+        return $this->id."KIK".$this->name;
     }
 
     public function getName()

@@ -7,12 +7,54 @@ session_start();
 
 class ProjectController {
 
+    /**
+     * @return array
+     * Used for TESTING #TODO Remove on release
+     */
+    public static function clearAllPools() {
+        $_SESSION['allPools'] = array();
+    }
+
+    /**
+     * @return array
+     * Used for TESTING #TODO Remove on release
+     */
+    public static function getAllAdminHashCodes() {
+        foreach($_SESSION['allPools'] as $pool)
+        {
+            echo $pool->getAdmin()->getHashCode()."<br>";
+        }
+    }
+
+    /**
+     * @return array
+     * Used for TESTING #TODO Remove on release
+     */
+    public static function getAllMembersHashCodes() {
+        foreach($_SESSION['allPools'] as $pool)
+        {
+            foreach($pool->getMembers() as $member)
+            {
+                echo $member->getHashCode()."<br>";
+            }
+        }
+    }
+
+    public static function getNotUsedID() {
+        if (empty($_SESSION['allPools'])) {
+            $_SESSION['id'] = 0;
+        }
+        $_SESSION['id']++;
+        return $_SESSION['id'];
+    }
+
+
 	public static function getAllPools() {
 	 //$_SESSION['allPools'] = array();
-		if (empty($GLOBALS['allPools'])) {
-			$GLOBALS['allPools'] = array();
+		if (empty($_SESSION['allPools'])) {
+            $_SESSION['allPools'] = array();
 		}
-		return $GLOBALS['allPools']; 
+		return $_SESSION['allPools'];
 	}
 	
 	/**
@@ -20,19 +62,19 @@ class ProjectController {
 	 * global array $GLOBALS['allPools']
 	 */
     public static function addProjectPool($sessid, $name, $adminName) {
-		if (empty($GLOBALS['allPools'])) {
-			$GLOBALS['allPools'] = array();
+		if (empty($_SESSION['allPools'])) {
+            $_SESSION['allPools'] = array();
 		}
-        array_push($GLOBALS['allPools'], new ProjectPool($sessid, $name, $adminName));
+        array_push($_SESSION['allPools'], new ProjectPool($sessid, $name, $adminName));
 	}
 	
 	public static function getPoolByID($id)
 	{
-		if (empty($GLOBALS['allPools'])) {
-			$GLOBALS['allPools'] = array();
+		if (empty($_SESSION['allPools'])) {
+            $_SESSION['allPools'] = array();
 		}
 		
-		foreach($GLOBALS['allPools'] as $pool)
+		foreach($_SESSION['allPools'] as $pool)
 		{
 			if($pool->hasID($id))
 			{
@@ -45,7 +87,7 @@ class ProjectController {
 
 	public static function joinPool($member, $hashCode)
 	{
-		foreach($GLOBALS['allPools'] as $pool)
+		foreach($_SESSION['allPools'] as $pool)
 		{
 			if($pool->registerMember($member, $hashCode))
 			{
@@ -57,7 +99,22 @@ class ProjectController {
 
 }
 
-var_dump(ProjectController::getAllPools());
+//ProjectController::clearAllPools();
+
+if (isset($_GET['testing'])) {
+    if ($_GET['testing']=='reset') {
+        ProjectController::clearAllPools();
+    }
+    echo "<h1>TESTING: All ADMIN HASHCODES</h1>";
+    ProjectController::getAllAdminHashCodes();
+    echo "<br>";
+    echo "<h1>TESTING: All MEMBER HASHCODES</h1>";
+    ProjectController::getAllMembersHashCodes();
+    echo "<br>";
+    echo "<h1>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h1>";
+    var_dump(ProjectController::getAllPools());
+}
+
 //ProjectController::addProjectPool("Super", "Name", "Admin");
 //var_dump(ProjectController::getAllPools());
 ?>

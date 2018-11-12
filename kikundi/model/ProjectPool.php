@@ -1,6 +1,7 @@
 <?php
 
 require_once 'interfaces/ProjectPoolImpl.php';
+require_once 'Member.php';
 
 /**
  * Class ProjectPool
@@ -16,10 +17,12 @@ class ProjectPool implements ProjectPoolImpl
     private $members;
 
 
-    //TODO: Constructor has to be modified
-    public function __construct()
+    public function __construct($sessionID, $name, $adminName)
     {
-        $this->projects = array();
+        $this->projects = [];
+        $this->members = [];
+        $this->admin = new Member(ProjectController::getNotUsedID(), $adminName, $sessionID, "Admin");
+        $this->name = $name;
     }
 
     /**
@@ -27,11 +30,7 @@ class ProjectPool implements ProjectPoolImpl
      */
     public function addProject($project, $tags)
     {
-        //stub: TODO: remove once form data is being fetched
-        $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
-        $project = new Project(5, 2, 5, "TheJavaProject", "This is a project description. It's all about ", $tags);
         array_push($this->projects, $project);
-        // try "$this->projects[] = $project;" to boost performance
     }
 
     /**
@@ -66,7 +65,7 @@ class ProjectPool implements ProjectPoolImpl
      */
     public function getAdmin()
     {
-        // TODO: Implement getAdmin() method.
+        return $this->admin;
     }
 
     /**
@@ -75,7 +74,15 @@ class ProjectPool implements ProjectPoolImpl
      */
     public function isMemberBySessionID($sessionID)
     {
-        // TODO: Implement isMemberBySessionID() method.
+        foreach ($this->members as $member) {
+            echo "<br>";
+            echo "comparing:".$member->getHashCode()." TO ".$sessionID;
+            echo "<br>";
+            if ($member->getHashCode() == $sessionID) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -101,6 +108,14 @@ class ProjectPool implements ProjectPoolImpl
     public function hasID($id)
     {
         return ($this->id === $id);
+    }
+
+    /**
+     * @return array
+     * Used for TESTING #TODO Remove on relase
+     */
+    public function getMembers() {
+        return $this->members;
     }
 
     /**

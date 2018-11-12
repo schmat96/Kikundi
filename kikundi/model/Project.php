@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Tag.php';
+require_once('interfaces/ProjectImpl.php');
 
 /**
  * Class Project
