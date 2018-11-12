@@ -20,6 +20,9 @@ class ProjectController {
 	 * global array $GLOBALS['allPools']
 	 */
     public static function addProjectPool($sessid, $name, $adminName) {
+		if (empty($GLOBALS['allPools'])) {
+			$GLOBALS['allPools'] = array();
+		}
         array_push($GLOBALS['allPools'], new ProjectPool($sessid, $name, $adminName));
 	}
 	
