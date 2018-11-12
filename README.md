@@ -1,6 +1,17 @@
 # Kikundi
 
+## Important Todos
+
+1) Dispatcher: This will add alot of errors considering the required_once found all over the project. Easiest solution would be to add all required_once in the Dispatcher, best solution would be to fix all requireds after implementing the dispatcher.
+2) Error Feedback for the user: Let the user know what he did wrong!
+3) Fix your shit FORMS you did not even add a method="get" in the templates.
+4) No more mistakes f.E. forget an underline in your shit constructors.
+
 ## Usage so far
+
+### Common Usage
+
+**All following Requests are Made with GET this can easily be changed by changing the method Call 'setPost()' of the PostController found at the end of [this File](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/PostController.php).**
 
 You can call this link to add a new Admin with the given Name:
 ```
@@ -22,6 +33,22 @@ http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=createP
 If you need to reset the Pools you can call
 ```
 http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
+```
+
+### Tags Usage
+
+#### Add new Tag
+
+This will add a new Tag
+```
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=addTag&tag=Frozen
+```
+
+#### Look for Tag
+
+This will check all Tags beginning with the given 'tag=' in this case 'ja'.
+```
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=checkTag&tag=ja
 ```
 
 ## Testing
