@@ -102,4 +102,18 @@ class ProjectPool implements ProjectPoolImpl
     {
         return ($this->id === $id);
     }
+
+    /**
+     * register with the hash given by the admin
+     */
+    public function registerMember($member, $hashCode)
+    {
+        if($this->getAdmin()->getHashCode() == $hashCode)
+        {
+            array_push($this->members, $member);
+            return true;
+        }
+        
+        return false;
+    }
 }
