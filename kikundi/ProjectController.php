@@ -9,15 +9,27 @@ class ProjectController {
 
 	public static function getAllPools() {
 	 //$_SESSION['allPools'] = array();
-		if (empty($_SESSION['allPools'])) {
-			$_SESSION['allPools'] = array();
+		if (empty($GLOBALS['allPools'])) {
+			$GLOBALS['allPools'] = array();
 		}
-		return $_SESSION['allPools']; 
+		return $GLOBALS['allPools']; 
 	}
 	
     public static function addProjectPool($sessid, $name, $adminName) {
-        array_push($_SESSION['allPools'], new ProjectPool($sessid, $name, $adminName));
-    }
+        array_push($GLOBALS['allPools'], new ProjectPool($sessid, $name, $adminName));
+	}
+	
+	public static function getPoolByID($id)
+        {
+            foreach($GLOBALS['allPools'] as $pool)
+            {
+                if($pool->hasID($id))
+                {
+                    return $pool;
+                }
+            }
+            return NULL;
+        }
 }
 
 var_dump(ProjectController::getAllPools());
