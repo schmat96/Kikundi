@@ -18,6 +18,7 @@ class Project implements ProjectImpl
     private $tags;
 
     public function __construct($maxMembers, $minMembers, $difficulty, $name, $description, $tags) {
+        $this->id = md5(uniqid(rand(), true));
         $this->maxMembers = $maxMembers;
         $this->minMembers = $minMembers;
         $this->difficulty = $difficulty;
