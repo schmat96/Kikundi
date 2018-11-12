@@ -104,7 +104,8 @@ class ProjectPool implements ProjectPoolImpl
     }
 
     /**
-     * register with the hash given by the admin
+     * register a new member into the pool with the
+     * pre-shared key (hashCode) by the admin
      */
     public function registerMember($member, $hashCode)
     {
