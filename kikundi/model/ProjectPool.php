@@ -76,10 +76,10 @@ class ProjectPool implements ProjectPoolImpl
     {
         foreach ($this->members as $member) {
             if ($member->getHashCode() == $sessionID) {
-                return true;
+                return $member;
             }
         }
-        return false;
+        return NULL;
     }
 
     /**
@@ -91,7 +91,7 @@ class ProjectPool implements ProjectPoolImpl
     }
 
     /**
-     * analyze the pool and distribute the memebers
+     * analyze the pool and distribute the members
      * to the projects
      */
     public function analyzeProjects()

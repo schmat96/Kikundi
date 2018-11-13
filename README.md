@@ -2,6 +2,7 @@
 
 ## Important Todos
 
+0) Find an solution so we dont have to set the session_id to 100 for every user and provide in every request the userName!
 1) Dispatcher: This will add alot of errors considering the required_once found all over the project. Easiest solution would be to add all required_once in the Dispatcher, best solution would be to fix all requireds after implementing the dispatcher.
 2) Error Feedback for the user: Let the user know what he did wrong!
 3) Fix your shit FORMS you did not even add a method="get" in the templates.
@@ -28,13 +29,17 @@ http://localhost/kikundi/kikundi/ProjectController.php?testing=true
 ```
 Now you can create a new Member which needs to tell the application in which Pool (or rather the admin hash code, found in the link above) he wants to join (hashCode=***)
 ```
-http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=registerMember&hashCode=1KIKMax&name=NeuerMember&sessionID=111
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=registerMember&hashCode=2KIKNeuerMember&name=NeuerMember&sessionID=111
 ```
 Congrats! You created a new Member! Call now this link and create a new project. The sessionID must be set to the MembersID, found under ProjectController with GET['testing'] set to anything.
 ```
 http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=createProject&maxMembers=4&minMembers=4&difficulty=3&name=asd&description=doppelASD&tags=nope&sessionID=3KIKNeuerMember
 ```
 
+This new Member or any other Member can now like that project:
+```
+http://localhost/kikundi/kikundi/controller/PostController.php?postLabel=likeProject&project=asd&sessionID=2KIKNeuerMember&status=liked
+```
 ### Tags Usage
 
 #### Add new Tag
@@ -61,27 +66,24 @@ http://localhost/kikundi/kikundi/ProjectController.php?testing=all
 
 ### How to implement a new Test:
 1) Create a new File Named: TestClass+Test f.E. TagControllerTest which tests the TagController.
-2) Create a new Class with the name TestClass+Test a good example can be found under [Here](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/TagControllerTest.php)
-3) Make sure you call all Test Methods in the constructur, add error-msg to the array and have the following lines at the end of your TestClass:
+2) Create a new Class with the name TestClass+Test which extends from controller/testing/Test.php a good example can be found under [Here](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/TagControllerTest.php)
+3) Make sure you call all Test Methods in the constructur and add all error-msg to the array.
 
-```
-$tct = new TagControllerTest();
-if (count ($tct->errors)===0) {
-    echo "<h1>Keine Errors in 'YourClass' gefunden.</h1>";
-} else {
-    echo "<h1 style='background-color: red'>Folgende Errors wurden in 'YourClass' gefunden:</h1>";
-    var_dump($tct->errors);
-}
-```
-4) Add your TestClass to the [ProjetController](https://github.com/schmat96/Kikundi/blob/master/kikundi/ProjectController.php) right after the require_once: 
+4) Add your TestClass to the [ProjetController](https://github.com/schmat96/Kikundi/blob/master/kikundi/ProjectController.php) and do the same just like the example TagControllerTest
 
 ```
 else if ($_GET['testing']=='all') {
+    ...
     require_once 'controller/TagControllerTest.php';
-    -->HERE<--
+    $tct = new TagControllerTest();
+    array_push($toTest, $tct);
+    <-- HERE -->
 } else
 ```
 5) Test your new TestClass by using the instructions declared under the title 'How to Test'
+
+### Feel free
+Feel free to make it even easier to Test
 
 ### Installing
 

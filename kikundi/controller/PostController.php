@@ -1,4 +1,8 @@
 <?php
+
+require_once('../ProjectController.php');
+
+
     class PostController {
 
         private $provided;
@@ -8,13 +12,17 @@
         }
 
 
+        /**
+         * Chooses what to do with the provided postLabel value.
+         * Everything below 3 lines of code may be added in the switch-case statement itself, everything up needs to have a own function
+         */
         public function chooseFunction(){
             if (isset($this->provided['postLabel'])) {
                 echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it for yourself 
                 in kikundi/controller/PostController.php <br>";
                 switch($this->provided['postLabel']){
                     case 'createProjectPool':
-                        require_once('../ProjectController.php');
+
                         ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['name'], $this->provided['adminName']);
                         break;
                     case 'registerMember':
@@ -24,17 +32,16 @@
                         $this->createProject();
                         break;
                     case 'addTag':
-                        require_once('../ProjectController.php');
                         TagController::saveTagInDb($this->provided['tag']);
                         break;
                     case 'checkTag':
-                        require_once('../ProjectController.php');
                         echo "<h2>All the Tags starting with ".$this->provided['tag']."</h2>";
                         var_dump(TagController::searchInDb($this->provided['tag']));
                         break;
                     case 'joinProjectPool':
                         break;
                     case 'likeProject':
+                        $this->likeProject();
                         break;
                     case 'approve':
                         break;
@@ -52,7 +59,7 @@
         }
 
         private function createProject() {
-            require_once('../model/Project.php');
+
             require_once('../ProjectController.php');
             $maxMembers = $this->provided['maxMembers'];
             $minMembers = $this->provided['minMembers'];
@@ -64,7 +71,7 @@
             $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
             $project = new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
             foreach (ProjectController::getAllPools() as $pool) {
-                if ($pool->isMemberBySessionID($this->provided['sessionID'])) {
+                if ($pool->isMemberBySessionID($this->provided['sessionID'])!=NULL) {
                     if ($pool->addProject($project, $tags)) {
                         echo "Project to ProjectPool added!";
                     }
@@ -74,7 +81,7 @@
         }
 
         private function joinProjectPool() {
-            require_once('../ProjectController.php');
+
             $hashCode = $this->provided['hashCode'];
             $name = $this->provided['name'];
             $sessionID = $this->provided['sessionID'];
@@ -83,6 +90,19 @@
         }
 
         private function likeProject() {
+            foreach (ProjectController::getAllPools() as $pool) {
+                $member = $pool->isMemberBySessionID($this->provided['sessionID']);
+                if ($member!=NULL) {
+                    foreach ($pool->getProjects() as $_project) {
+                        if ($this->provided['project']===$_project->getName()) {
+                            ProjectController::changeStatus($_project, $member, 'liked');
+                        }
+                    }
+                }
+
+            }
+
+
 
         }
 

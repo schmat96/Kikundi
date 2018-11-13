@@ -1,8 +1,11 @@
 <?php
 
+
+
 require_once 'model/ProjectPool.php';
 require_once 'controller/TagController.php';
 require_once 'model/Tag.php';
+require_once 'model/Project.php';
 
 session_id(100);
 session_start();
@@ -26,6 +29,22 @@ class ProjectController {
         foreach($_SESSION['allPools'] as $pool)
         {
             echo $pool->getAdmin()->getHashCode()."<br>";
+        }
+    }
+
+    /**
+     * @return array
+     * Used for TESTING #TODO Remove on release
+     */
+    public static function getAllProjectLikes() {
+        foreach($_SESSION['allPools'] as $pool)
+        {
+            foreach($pool->getProjects() as $project)
+            {
+                echo "<h3>".$project->getName()."</h3>";
+                var_dump($project->getLikes());
+            }
+
         }
     }
 
@@ -96,6 +115,10 @@ class ProjectController {
 		return NULL;
 	}
 
+	public static function changeStatus($project, $member, $status) {
+        $project->changeOrDeleteStatus($member, $status);
+    }
+
 	public static function joinPool($member, $hashCode)
 	{
 		foreach($_SESSION['allPools'] as $pool)
@@ -119,7 +142,22 @@ if (isset($_GET['testing'])) {
         ProjectController::clearAllPools();
     }
     else if ($_GET['testing']=='all') {
+        $toTest = array();
+
         require_once 'controller/TagControllerTest.php';
+        $tct = new TagControllerTest();
+        array_push($toTest, $tct);
+
+        foreach ($toTest as $test) {
+            if (count ($test->errors)===0) {
+                echo "<h1>Keine Errors in ".$test->getName()." gefunden.</h1>";
+            } else {
+                echo "<h1 style='background-color: red'>Folgende Errors wurden in ".$test->getName()." gefunden:</h1>";
+                var_dump($tct->errors);
+            }
+        }
+
+
     } else {
         echo "<h2>TESTING: All ADMIN HASHCODES</h2>";
         ProjectController::getAllAdminHashCodes();
@@ -128,6 +166,9 @@ if (isset($_GET['testing'])) {
         ProjectController::getAllMembersHashCodes();
         echo "<h2>TESTING: All TAGS</h2>";
         var_dump(TagController::getAllTags());
+        echo "<br>";
+        echo "<h2>TESTING: All Projects Likes</h2>";
+        var_dump(ProjectController::getAllProjectLikes());
         echo "<br>";
         echo "<h2>TESTING: IF YOU CAN INTERPRET THIS YOU ARE GODLIKE</h2>";
         var_dump(ProjectController::getAllPools());
