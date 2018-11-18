@@ -11,7 +11,11 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<?php include_once "user/create-project-idea.template.html" ?>
+
+<?php require_once '../../controller/Dispatcher.php';
+$dispatcher = new Dispatcher(2);
+$dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
