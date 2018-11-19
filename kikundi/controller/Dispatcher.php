@@ -9,10 +9,10 @@
 class Dispatcher
 {
     private $pathDepth = 5;
+    private $html = '';
 
     private function writeHtml($filePath) {
-        $html = file_get_contents($filePath);
-        echo $html;
+        $this->html = file_get_contents($filePath);
     }
 
     public function __construct($pathDepth)
@@ -61,5 +61,11 @@ class Dispatcher
                 $this->writeHtml('../../view/src/user/create-project-idea.template.html');
                 break;
         }
+        
+        echo $this->html;
+    }
+
+    public function getHtml(){
+        return $this->html;
     }
 }
