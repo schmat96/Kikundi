@@ -86,7 +86,9 @@ require_once('../ProjectController.php');
             $name = $this->provided['name'];
             $sessionID = 100;
 //            $sessionID = $this->provided['sessionID'];
-            $member = new Member(ProjectController::getNotUsedID(), $name, $sessionID, "Member");
+            $userId = ProjectController::getNotUsedID();
+            $member = new Member($userId, $name, $sessionID, "Member");
+            setcookie("userId", $userId, 0, "./"); // TODO frontend getter for this one
             ProjectController::joinPool($member, $hashCode);
         }
 
