@@ -13,15 +13,15 @@
 
         }
 
-        private setUp(){
+        private function setUp(){
             $dispatcher = new Dispatcher(0);
         }
 
-        private tearDown(){
+        private function tearDown(){
 
         }
 
-        private testDisplayRequestedPage(){
+        private function testDisplayRequestedPage(){
             $url = 'homeadmin';
             $dispatcher->displayRequestedPage($url);
             if(!assert($dispatcher->getHtml() === file_get_contents('../../view/src/admin/home.template.html')){
