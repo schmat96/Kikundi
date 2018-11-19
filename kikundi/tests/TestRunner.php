@@ -13,8 +13,11 @@
 
         require_once 'controller/DispatcherTest.php';
         $dt = new DispatcherTest();
-        var_dump($dt);
         array_push($toTest, $dt);
+
+        require_once 'model/ProjectPoolTest.php';
+        $ppt = new ProjectPoolTest();
+        array_push($toTest, $ppt);
 
         foreach ($toTest as $test) {
             if (count ($test->errors)===0) {
