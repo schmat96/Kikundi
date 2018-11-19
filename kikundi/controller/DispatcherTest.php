@@ -24,7 +24,7 @@
         private function testDisplayRequestedPage(){
             $url = 'homeadmin';
             $dispatcher->displayRequestedPage($url);
-            if(!assert($dispatcher->getHtml() === file_get_contents('../../view/src/admin/home.template.html')){
+            if(!assert($dispatcher->getHtml() === file_get_contents('../../view/src/admin/home.template.html'))){
                 parent::addError("testDisplayRequestedPage failed!");
             }
         }
