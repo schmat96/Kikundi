@@ -61,7 +61,7 @@ class Dispatcher
                 $this->writeHtml('../../view/src/user/create-project-idea.template.html');
                 break;
         }
-        
+
         echo $this->html;
     }
 

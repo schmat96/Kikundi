@@ -1,6 +1,7 @@
 <?php
     require_once 'testing/Test.php';
-    class DispatcherTest implements Test {
+    require_once 'controller/Dispatcher.php';
+    class DispatcherTest extends Test {
 
         private $url;
         private $dispatcher;
@@ -14,7 +15,7 @@
         }
 
         private function setUp(){
-            $dispatcher = new Dispatcher(0);
+            $this->dispatcher = new Dispatcher(0);
         }
 
         private function tearDown(){
@@ -22,9 +23,9 @@
         }
 
         private function testDisplayRequestedPage(){
-            $url = 'homeadmin';
-            $dispatcher->displayRequestedPage($url);
-            if(!assert($dispatcher->getHtml() === file_get_contents('../../view/src/admin/home.template.html'))){
+            $this->url = 'homeadmin';
+            $this->dispatcher->displayRequestedPage($this->url);
+            if(!assert($this->dispatcher->getHtml() === file_get_contents('../../view/src/admin/home.template.html'))){
                 parent::addError("testDisplayRequestedPage failed!");
             }
         }
