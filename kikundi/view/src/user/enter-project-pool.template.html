@@ -6,17 +6,17 @@
                 <div class="title">
                     <h1>Welcome To Kikundi</h1>
                 </div>
-
-                <form>
+                <form action="../../controller/PostController.php" method="get">
+                    <input type="hidden" name="postLabel" value="registerMember">
                     <div class="form-group">
                         <div class="welcome-input">
                             <h2>Please enter your name</h2>
-                            <input class="text-input form-control" type="text">
+                            <input class="text-input form-control" type="text" name="name">
                         </div>
 
                         <div class="welcome-input">
                             <h2>Please enter your project-pool-hash</h2>
-                            <input class="text-input form-control" type="text">
+                            <input class="text-input form-control" type="text" name="hashCode">
                         </div>
 
                         <div class="center-text button-holder">

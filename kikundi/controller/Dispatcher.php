@@ -25,7 +25,7 @@ class Dispatcher
      * @param $url
      */
     public function displayRequestedPage($url) {
-        $requestedPage = explode('/', $url)[$this->pathDepth];
+        $requestedPage = explode('/', $url);
         // pretty important
         // todo 1: add remaining/missing pages
         // todo 2: add correct requested url in form (html)
@@ -48,7 +48,7 @@ class Dispatcher
                 $this->writeHtml('../../view/src/general-components/project-pool-evaluation-card.template.html');
                 break;
             case 'createprojectidea':
-                $this->writeHtml('../../view/src/user/create-project-idea.template.html');
+                $this->writeHtml('../../view/src/user/create-project-idea.template.php');
                 break;
             case 'enterprojectpool':
                 $this->writeHtml('../../view/src/user/enter-project-pool.template.html');
@@ -57,7 +57,7 @@ class Dispatcher
                 $this->writeHtml('../../view/src/user/home.template.html');
                 break;
             default:
-                $this->writeHtml('../../view/src/user/create-project-idea.template.html');
+                $this->writeHtml('../../view/src/user/create-project-idea.template.php');
                 break;
         }
     }
