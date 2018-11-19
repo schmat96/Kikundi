@@ -84,7 +84,8 @@ require_once('../ProjectController.php');
 
             $hashCode = $this->provided['hashCode'];
             $name = $this->provided['name'];
-            $sessionID = $this->provided['sessionID'];
+            $sessionID = 100;
+//            $sessionID = $this->provided['sessionID'];
             $member = new Member(ProjectController::getNotUsedID(), $name, $sessionID, "Member");
             ProjectController::joinPool($member, $hashCode);
         }
