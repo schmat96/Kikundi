@@ -5,6 +5,7 @@ require_once('../ProjectController.php');
 
     class PostController {
 
+        private $DISPATCHER_URL = "../view/src/";
         private $provided;
 
         public function setPost($provided) {
@@ -66,18 +67,19 @@ require_once('../ProjectController.php');
             $difficulty = $this->provided['difficulty'];
             $name = $this->provided['name'];
             $description = $this->provided['description'];
-            //#TODO REMOVE ONCE FETCHED
+            //TODO REMOVE ONCE FETCHED
             //$tags = $this->provided['tags'];
+            setcookie('userId', "userId", 0, "./"); // -> works!
+            // TODO FIX ISSUE HERE: you have to reload the page to get the result with a cookie set
             $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
             $project = new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
             foreach (ProjectController::getAllPools() as $pool) {
-                if ($pool->isMemberBySessionID($this->provided['sessionID'])!=NULL) {
+                if ($pool->isMemberBySessionID($_COOKIE['userId'])!=NULL) {
                     if ($pool->addProject($project, $tags)) {
                         echo "Project to ProjectPool added!";
                     }
                 }
             }
-
         }
 
         private function joinProjectPool() {
@@ -88,8 +90,9 @@ require_once('../ProjectController.php');
 //            $sessionID = $this->provided['sessionID'];
             $userId = ProjectController::getNotUsedID();
             $member = new Member($userId, $name, $sessionID, "Member");
-            setcookie("userId", $userId, 0, "./"); // TODO frontend getter for this one
+            setcookie("userId", $userId, 0, "./");
             ProjectController::joinPool($member, $hashCode);
+            header("Location: " . $this->DISPATCHER_URL . "homeuser");
         }
 
         private function likeProject() {

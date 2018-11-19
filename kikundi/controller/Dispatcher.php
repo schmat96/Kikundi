@@ -51,14 +51,11 @@ class Dispatcher
             case 'createprojectidea':
                 $this->writeHtml('../../view/src/user/create-project-idea.template.php');
                 break;
-            case 'enterprojectpool':
-                $this->writeHtml('../../view/src/user/enter-project-pool.template.html');
-                break;
             case 'homeuser':
                 $this->writeHtml('../../view/src/user/home.template.html');
                 break;
             default:
-                $this->writeHtml('../../view/src/user/create-project-idea.template.php');
+                $this->writeHtml('../../view/src/user/enter-project-pool.template.html');
                 break;
         }
 

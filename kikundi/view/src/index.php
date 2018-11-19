@@ -12,9 +12,10 @@
 </head>
 <body>
 
-<?php require_once '../../controller/Dispatcher.php';
-$dispatcher = new Dispatcher(5);
-$dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
+<?php
+ require_once '../../controller/Dispatcher.php';
+ $dispatcher = new Dispatcher(5);
+ $dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

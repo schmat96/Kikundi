@@ -5,8 +5,7 @@
             <h1>New Project-Idea</h1>
             <form action="../../controller/PostController.php" method="get">
                 <div class="form-group">
-                    <input type="hidden" id="postLabel" value="createProject" />
-                    <input type="hidden" id="sessionID" value="<?php  ?>" />
+                    <input type="hidden" name="postLabel" value="createProject" />
                     <div class="row">
                         <div class="col-xl-6" id="left-input">
                             <h3>Project name</h3>
