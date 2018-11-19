@@ -13,7 +13,7 @@
 <body>
 
 <?php require_once '../../controller/Dispatcher.php';
-$dispatcher = new Dispatcher(2);
+$dispatcher = new Dispatcher(5);
 $dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
 
 <!-- Optional JavaScript -->

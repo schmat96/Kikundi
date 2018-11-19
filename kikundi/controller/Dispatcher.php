@@ -8,7 +8,7 @@
 
 class Dispatcher
 {
-    private $pathDepth = 2;
+    private $pathDepth = 5;
 
     private function writeHtml($filePath) {
         $html = file_get_contents($filePath);
@@ -33,6 +33,7 @@ class Dispatcher
         // not important
         // todo 3: add variable/read admin status to differentiate between user and admin template
         // todo 4: improve naming and path selection
+
 
         switch(strtolower($requestedPage)) {
             case 'homeadmin':
