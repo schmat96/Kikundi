@@ -82,6 +82,8 @@ else if ($_GET['testing']=='all') {
 ```
 5) Test your new TestClass by using the instructions declared under the title 'How to Test'
 
+6) Testclasses should be in the same folder as the real classes but Testing should be implemented in the TestRunner.php
+
 ### Feel free
 Feel free to make it even easier to Test
 

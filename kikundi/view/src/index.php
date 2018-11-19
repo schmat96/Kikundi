@@ -12,13 +12,9 @@
 </head>
 <body>
 
-<?php //require_once '../../controller/Dispatcher.php';
-//$dispatcher = new Dispatcher(2);
-//$dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])
-
-require_once 'user/create-project-idea.template.php';
-
-?>
+<?php require_once '../../controller/Dispatcher.php';
+$dispatcher = new Dispatcher(5);
+$dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -8,11 +8,11 @@
 
 class Dispatcher
 {
-    private $pathDepth = 2;
+    private $pathDepth = 5;
+    private $html = '';
 
     private function writeHtml($filePath) {
-        $html = file_get_contents($filePath);
-        echo $html;
+        $this->html = file_get_contents($filePath);
     }
 
     public function __construct($pathDepth)
@@ -33,6 +33,7 @@ class Dispatcher
         // not important
         // todo 3: add variable/read admin status to differentiate between user and admin template
         // todo 4: improve naming and path selection
+
 
         switch(strtolower($requestedPage)) {
             case 'homeadmin':
@@ -60,5 +61,11 @@ class Dispatcher
                 $this->writeHtml('../../view/src/user/create-project-idea.template.php');
                 break;
         }
+
+        echo $this->html;
+    }
+
+    public function getHtml(){
+        return $this->html;
     }
 }
