@@ -11,6 +11,11 @@
         $tct = new TagControllerTest();
         array_push($toTest, $tct);
 
+        require_once 'controller/DispatcherTest.php';
+        $dt = new DispatcherTest();
+        var_dump($dt);
+        array_push($toTest, $dt);
+
         foreach ($toTest as $test) {
             if (count ($test->errors)===0) {
                 echo "<h1>Keine Errors in ".$test->getName()." gefunden.</h1>";
