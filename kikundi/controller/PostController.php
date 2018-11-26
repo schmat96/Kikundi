@@ -35,8 +35,8 @@ require_once('../ProjectController.php');
                 in kikundi/controller/PostController.php <br>";
                 switch($this->provided['postLabel']){
                     case 'createProjectPool':
-
-                        ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['name'], $this->provided['adminName']);
+                        ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['adminName']);
+                        setcookie('newCook', '69', 2019-9-11, '/');
                         break;
                     case 'registerMember':
                         $this->joinProjectPool();
@@ -87,7 +87,7 @@ require_once('../ProjectController.php');
             $description = $this->provided['description'];
             //TODO REMOVE ONCE FETCHED
             //$tags = $this->provided['tags'];
-            setcookie('userId', "userId", 0, "./"); // -> works!
+            setcookie('userId', "userId", 0, "/");
             // TODO FIX ISSUE HERE: you have to reload the page to get the result with a cookie set
             $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
             $project = new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
@@ -112,7 +112,7 @@ require_once('../ProjectController.php');
 //            $sessionID = $this->provided['sessionID'];
             $userId = ProjectController::getNotUsedID();
             $member = new Member($userId, $name, $sessionID, "Member");
-            setcookie("userId", $userId, 0, "./");
+            setcookie("userId", $userId, 0, "/");
             ProjectController::joinPool($member, $hashCode);
             header("Location: " . $this->DISPATCHER_URL . "homeuser");
         }

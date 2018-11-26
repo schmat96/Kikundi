@@ -4,10 +4,12 @@
     <div class="row">
         <div class="col-xl-6 newPool">
             <h1>New Project Pool</h1>
-            <form>
+            <form action="../../controller/PostController.php">
+                <input name="postLabel" value="createProjectPool" type="hidden">
+                <input name="sessionID" value="1" type="hidden">
                 <div class="form-group">
                     <label for="adminName">Admin Name</label>
-                    <input type="text" class="form-control" id="adminName" placeholder="Enter your name">
+                    <input type="text" class="form-control" id="adminName" name="adminName" placeholder="Enter your name">
                 </div>
                 <button type="submit" class="btn btn-outline-light">next</button>
             </form>

@@ -105,7 +105,7 @@ class ProjectController {
 		}
         $projectpool = new ProjectPool($sessid, $name, $adminName);
         array_push($_SESSION['allPools'], $projectpool);
-        header("Location: ../../kikundi/view/src/homeadmin?projectpoolname=".$projectpool->getAdmin()->getHashCode());
+        header("Location: /Kikundi/kikundi/view/src/homeadmin?projectpoolname=".$projectpool->getAdmin()->getHashCode());
 	}
     
     /**

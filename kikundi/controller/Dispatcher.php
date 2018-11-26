@@ -55,7 +55,7 @@ class Dispatcher
 
         switch(strtolower($requestedPage2)) {
             case 'homeadmin':
-                $this->writeHtml('../../view/src/admin/home.template.html');
+                $this->writeHtml('../../view/src/admin/home.template.php');
                 break;
             case 'newprojectpool':
                 $this->writeHtml('../../view/src/admin/new-project-pool.template.html');
@@ -83,9 +83,4 @@ class Dispatcher
     public function getHtml(){
         return $this->html;
     }
-}
-
-foreach($_GET as $key => $value)
-{
-    setcookie($key, $value);
 }

@@ -1,7 +1,7 @@
 
 //Sets a cookie, which exists until you either set it ="" or you close the website/browser
 function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=/";
+    document.cookie = cname + "=" + cvalue + "; path=/";
 }
 
 //Returns the value of a cookie if it exists
