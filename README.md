@@ -2,11 +2,11 @@
 
 ## Important Todos
 
-0) Find an solution so we dont have to set the session_id to 100 for every user and provide in every request the userName!
-1) Dispatcher: This will add alot of errors considering the required_once found all over the project. Easiest solution would be to add all required_once in the Dispatcher, best solution would be to fix all requireds after implementing the dispatcher.
-2) Error Feedback for the user: Let the user know what he did wrong!
-3) Fix your shit FORMS you did not even add a method="get" in the templates.
-4) No more mistakes f.E. forget an underline in your shit constructors.
+0) Find a solution to remove the projectpool $_GET Variable in the header
+1) Add onclick function on Other Project Idea in homeuser -> just dont fuck my fucking code up this time ty.
+2) Check if testing still works
+3) If you have any questions ask me on discord or whatsapp or make a new Issue under this github 
+[Issue](https://github.com/schmat96/Kikundi/issues/new/choose). If you choose to contact me under whatsapp or discord you need to provide a password to make sure you have atleast read the whole README. Therefore the Password can be found somewhere here.
 
 ## Usage so far
 
@@ -15,7 +15,27 @@ If you need to reset the session variables you can call:
 http://localhost/kikundi/kikundi/ProjectController.php?testing=reset
 ```
 
-### Common Usage
+### NEW USAGE
+Call
+```
+http://localhost/Kikundi/kikundi/view/src/newprojectpool
+```
+and create a new ProjectPool. Now you should see the Admin Site with the HashCode, this will be used on the next page:
+
+Call:
+```
+http://localhost/Kikundi/kikundi/view/src/joinuser
+```
+or 
+```
+http://localhost/Kikundi/kikundi/view/src/
+```
+You need to provide the Generated Project-Pool-Hash on Site 1 to join a projectpool
+You should be redirected to the Home User Site if you provided a wron ProjectPoolID to an error page.
+You can have multiple Members with the same Name... Password for whatsapp/discord if you have any question is 'frozen'
+
+Now You can Click on 'new project idea' and create a new project idea. The Project Idea should appear now in Other Projects Ideas
+### Common Usage [DEPRECATED]
 
 **All following Requests are Made with GET this can easily be changed by changing the method Call 'setPost()' of the PostController found at the end of [this File](https://github.com/schmat96/Kikundi/blob/master/kikundi/controller/PostController.php).**
 

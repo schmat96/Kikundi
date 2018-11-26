@@ -17,6 +17,9 @@
 
  require_once '../../controller/Dispatcher.php';
  $dispatcher = new Dispatcher(5);
+ if (isset($_GET['projectpool'])) {
+     $dispatcher->setProjectPoolName($_GET['projectpool']);
+ }
  $dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>
 
 <!-- Optional JavaScript -->

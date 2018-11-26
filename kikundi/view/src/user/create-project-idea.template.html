@@ -6,6 +6,12 @@
             <form action="../../controller/PostController.php" method="get">
                 <div class="form-group">
                     <input type="hidden" name="postLabel" value="createProject" />
+                    <script>
+                        document.write(
+                          '<input type="hidden" name="sessionID" value="'+getCookie('projectpool')+'" />'
+                        );
+                    </script>
+
                     <div class="row">
                         <div class="col-xl-6" id="left-input">
                             <h3>Project name</h3>

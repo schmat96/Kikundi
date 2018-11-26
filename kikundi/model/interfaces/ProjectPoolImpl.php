@@ -38,12 +38,6 @@
         public function getAdmin();
 
         /**
-         * get wether the user with the corresponding sessionID
-         * is a valid user of the pool
-         */
-        public function isMemberBySessionID( $sessionID );
-
-        /**
          * get the name of the pool
          */
         public function getName();

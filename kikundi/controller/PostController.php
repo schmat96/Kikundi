@@ -6,10 +6,7 @@ require_once('../ProjectController.php');
      * Controller class to administrate and facilitate all POST-requests
      */
     class PostController {
-        /**
-         * Standard-URL under which the dispatcher can be found
-         */
-        private $DISPATCHER_URL = "../view/src/";
+
 
         /**
          * Variable to store arguments provided in a GET-Request
@@ -92,10 +89,9 @@ require_once('../ProjectController.php');
             $tags = array(new Tag("cool"), new Tag("java"), new Tag("#notphp"));
             $project = new Project($maxMembers, $minMembers, $difficulty, $name, $description, $tags);
             foreach (ProjectController::getAllPools() as $pool) {
-                if ($pool->isMemberBySessionID($_COOKIE['userId'])!=NULL) {
-                    if ($pool->addProject($project, $tags)) {
-                        echo "Project to ProjectPool added!";
-                    }
+                if ($pool->hasID($this->provided['sessionID'])) {
+                    $pool->addProject($project, $tags);
+                    ProjectController::redirectToHomeAdmin($pool);
                 }
             }
         }
@@ -114,7 +110,7 @@ require_once('../ProjectController.php');
             $member = new Member($userId, $name, $sessionID, "Member");
             setcookie("userId", $userId, 0, "/");
             ProjectController::joinPool($member, $hashCode);
-            header("Location: " . $this->DISPATCHER_URL . "homeuser");
+            //
         }
 
         /**

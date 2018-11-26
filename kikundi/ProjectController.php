@@ -16,6 +16,13 @@ session_start();
 class ProjectController {
 
     /**
+     * Standard-URL under which the dispatcher can be found
+     */
+    public static $DISPATCHER_URL = "../view/src/";
+
+
+
+    /**
      * @return array
      * Used for TESTING #TODO Remove on release
      */
@@ -105,7 +112,7 @@ class ProjectController {
 		}
         $projectpool = new ProjectPool($sessid, $name, $adminName);
         array_push($_SESSION['allPools'], $projectpool);
-        header("Location: /Kikundi/kikundi/view/src/homeadmin?projectpoolname=".$projectpool->getAdmin()->getHashCode());
+        header("Location: /Kikundi/kikundi/view/src/homeadmin?projectpool=".$projectpool->getAdmin()->getHashCode());
 	}
     
     /**
@@ -144,26 +151,32 @@ class ProjectController {
 		{
 			if($pool->registerMember($member, $hashCode))
 			{
-				return;
+                header("Location: " . ProjectController::$DISPATCHER_URL . "homeuser?projectpool=".$pool->getAdmin()->getHashCode());
 			}
 		}
 		echo "\nCould not register Member with any Pool: hash didn't match any entry\n";
 	}
 
+	public static function redirectToHomeAdmin($pool) {
+	    echo 'rediriecting';
+        header("Location: " . ProjectController::$DISPATCHER_URL . "homeuser?projectpool=".$pool->getAdmin()->getHashCode());
+    }
+
 }
 
 
-/**
- * For testing purposes
- */
-echo "<h1>Version 1.00 Beta</h1>";
-echo "There are no error validations or error feedbacks currently";
+
 
 /**
  * run tests
  * You can run them with "url/?testing=all"
  */
 if (isset($_GET['testing'])) {
+    /**
+     * For testing purposes
+     */
+    echo "<h1>Version 1.00 Beta</h1>";
+    echo "There are no error validations or error feedbacks currently";
     require_once 'tests/TestRunner.php';
 }
 

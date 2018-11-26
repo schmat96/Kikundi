@@ -88,20 +88,6 @@ class ProjectPool implements ProjectPoolImpl
     }
 
     /**
-     * get wether the user with the corresponding sessionID
-     * is a valid user of the pool
-     */
-    public function isMemberBySessionID($sessionID)
-    {
-        foreach ($this->members as $member) {
-            if ($member->getHashCode() == $sessionID) {
-                return $member;
-            }
-        }
-        return NULL;
-    }
-
-    /**
      * get the name of the pool
      */
     public function getName()
@@ -123,7 +109,7 @@ class ProjectPool implements ProjectPoolImpl
      */
     public function hasID($id)
     {
-        return ($this->id === $id);
+        return ($this->getAdmin()->getHashCode() === $id);
     }
 
     /**
