@@ -32,7 +32,7 @@ http://localhost/Kikundi/kikundi/view/src/
 ```
 You need to provide the Generated Project-Pool-Hash on Site 1 to join a projectpool
 You should be redirected to the Home User Site if you provided a wron ProjectPoolID to an error page.
-You can have multiple Members with the same Name... Password for whatsapp/discord if you have any question is 'frozen'
+You can have multiple Members with the same Name... pw (CTRL-F freak you) for whatsapp/discord if you have any question is 'frozen'
 
 Now You can Click on 'new project idea' and create a new project idea. The Project Idea should appear now in Other Projects Ideas
 ### Common Usage [DEPRECATED]
