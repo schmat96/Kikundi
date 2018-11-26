@@ -7,6 +7,10 @@
  */
 
 require_once 'testing/Test.php';
+
+/**
+ * class for testing the TagController
+ */
 class TagControllerTest extends Test {
     /**
      * TagControllerTest constructor. Every Test Constructor needs to call his Test Methods.

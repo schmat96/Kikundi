@@ -26,11 +26,16 @@
             $this->tearDown();
 
         }
-
+         /**
+          * setup test, build preconditions
+          */
         private function setUp(){
             $this->dispatcher = new Dispatcher(0);
         }
 
+        /**
+         * cleanup
+         */
         private function tearDown(){
 
         }
