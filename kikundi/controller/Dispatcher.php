@@ -42,7 +42,7 @@ class Dispatcher
      * @param $url
      */
     public function displayRequestedPage($url) {
-        $requestedPage = explode('/', $url);
+        $requestedPage = explode('/', $url)[$this->pathDepth];
         // pretty important
         // todo 1: add remaining/missing pages
         // todo 2: add correct requested url in form (html)
