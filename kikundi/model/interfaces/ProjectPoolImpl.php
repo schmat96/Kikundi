@@ -4,6 +4,10 @@
      * author: Keya Kersting
      * date: 05.11.2018
      */
+
+     /**
+      * Interface for the ProjectPool class
+      */
     interface ProjectPoolImpl{
         /**
          * Add a new Project to the pool

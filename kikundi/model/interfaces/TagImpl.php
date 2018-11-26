@@ -3,6 +3,10 @@
      * author: Keya Kersting
      * date: 05.11.2018
      */
+
+     /**
+      * Interface for the tag class
+      */
     interface TagImpl{
         /**
          * get the name of the tag

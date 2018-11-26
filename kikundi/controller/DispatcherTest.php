@@ -1,11 +1,24 @@
 <?php
     require_once 'testing/Test.php';
     require_once 'controller/Dispatcher.php';
-    class DispatcherTest extends Test {
 
+    /**
+     * Testing class for the Dispatcher
+     */
+    class DispatcherTest extends Test {
+        /**
+         * url which will be injected into the dispatcher
+         */
         private $url;
+
+        /**
+         * Instance of the dispatcher
+         */
         private $dispatcher;
 
+        /**
+         * constructor
+         */
         public function __construct (){
             parent::__construct();
             $this->setUp();
@@ -22,6 +35,9 @@
 
         }
 
+        /**
+         * test wether a requested page gets displayed or rerouted or not even shown
+         */
         private function testDisplayRequestedPage(){
             $this->url = 'homeadmin';
             $this->dispatcher->displayRequestedPage($this->url);

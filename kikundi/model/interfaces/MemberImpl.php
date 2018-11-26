@@ -4,6 +4,10 @@
      * author: Keya Kersting
      * date: 05.11.2018
      */
+
+     /**
+      * Interace for the Member class
+      */
     interface MemberImpl {
         /**
          * returns a hash (for Admins) as a string

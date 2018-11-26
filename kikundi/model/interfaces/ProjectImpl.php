@@ -4,6 +4,10 @@
      * author: Keya Kersting
      * date: 05.11.2018
      */
+
+     /**
+      * Interface for the Project class
+      */
     interface ProjectImpl{
         /**
          * get the name of the project

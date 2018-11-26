@@ -6,15 +6,32 @@
  * Time: 20:30
  */
 
+ /**
+  * Dispatcher class which handles http-Requests
+  */
 class Dispatcher
 {
+    /**
+     * Variable to track slashes
+     */
     private $pathDepth = 5;
+
+    /**
+     * Variable to be filled with the loaded html-file
+     */
     private $html = '';
 
+    /**
+     * write file-contents of the provided filepath into the
+     * html-variable
+     */
     private function writeHtml($filePath) {
         $this->html = file_get_contents($filePath);
     }
 
+    /**
+     * constructor
+     */
     public function __construct($pathDepth)
     {
         $this->pathDepth = $pathDepth;

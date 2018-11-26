@@ -4,6 +4,10 @@
      * author: Keya Kersting
      * date: 05.11.2018
      */
+
+     /**
+      * Interface for the MemberController
+      */
     interface MembercontrollerImpl {
         /**
          * The given Member likes the given project
