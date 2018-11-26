@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Runnerfile to run tests
+ */
     if ($_GET['testing']=='reset') {
         ProjectController::clearAllPools();
     }
