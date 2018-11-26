@@ -10,7 +10,9 @@ require_once 'model/Project.php';
 session_id(100);
 session_start();
 
-
+/**
+ * class for Controlling all Projects and Pools
+ */
 class ProjectController {
 
     /**
@@ -62,6 +64,9 @@ class ProjectController {
         }
     }
 
+    /**
+     * get all id's which are not used
+     */
     public static function getNotUsedID() {
         if (empty($_SESSION['id'])) {
             $_SESSION['id'] = 0;
@@ -70,6 +75,9 @@ class ProjectController {
         return $_SESSION['id'];
     }
 
+    /**
+     * get all tags which are not used
+     */
     public static function getNotUsedTagID() {
         if (empty($_SESSION['idTag'])) {
             $_SESSION['idTag'] = 0;
@@ -97,7 +105,10 @@ class ProjectController {
 		}
         array_push($_SESSION['allPools'], new ProjectPool($sessid, $name, $adminName));
 	}
-	
+    
+    /**
+     * get a pool which has an id matching the provided id
+     */
 	public static function getPoolByID($id)
 	{
 		if (empty($_SESSION['allPools'])) {
@@ -115,10 +126,16 @@ class ProjectController {
 		return NULL;
 	}
 
+    /**
+     * change the status of member within a project
+     */
 	public static function changeStatus($project, $member, $status) {
         $project->changeOrDeleteStatus($member, $status);
     }
 
+    /**
+     * join a ProjectPool with a pre-shared hashcode by the admin
+     */
 	public static function joinPool($member, $hashCode)
 	{
 		foreach($_SESSION['allPools'] as $pool)
@@ -134,9 +151,16 @@ class ProjectController {
 }
 
 
+/**
+ * For testing purposes
+ */
 echo "<h1>Version 1.00 Beta</h1>";
 echo "There are no error validations or error feedbacks currently";
 
+/**
+ * run tests
+ * You can run them with "url/?testing=all"
+ */
 if (isset($_GET['testing'])) {
     require_once 'tests/TestRunner.php';
 }
