@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Tag
+ * Class Tag to describe Projects
  */
 class Tag {
 
@@ -18,6 +18,9 @@ class Tag {
         return $this->name;
     }
 
+    /**
+     * compare equality of a provided tag
+     */
     public function equals($tag) {
         return $tag->getName() === $this->getName();
     }
