@@ -10,14 +10,44 @@ require_once('interfaces/ProjectImpl.php');
 
 class Project implements ProjectImpl
 {
-
+    /**
+     * id des Projekts die individuell ist
+     */
     private $id;
+
+    /**
+     * Wieviele Members das Projekt maximal aufnehmen kann
+     */
     private $maxMembers;
+
+    /**
+     * Wieviele Members das Projekt mindestens haben muss
+     */
     private $minMembers;
+
+    /**
+     * Schwierigkeit des Projekt
+     */
     private $difficulty;
+
+    /**
+     * Name des Projekts
+     */
     private $name;
+
+    /**
+     * Beschreibung des Projekts
+     */
     private $description;
+
+    /**
+     * Tags die das Projekt hat
+     */
     private $tags;
+
+    /**
+     * Wer alles das Projekt geliked hat
+     */
     private $likedMembers;
 
     public function __construct($maxMembers, $minMembers, $difficulty, $name, $description, $tags) {
@@ -51,6 +81,9 @@ class Project implements ProjectImpl
         return $this->likedMembers;
     }
 
+    /**
+     * ändere den Status eines Members mit dieser Methode
+     */
     public function changeOrDeleteStatus($member, $status) {
         if ($status===NULL) {
             //#TODO remove member from $this->likedMembers
