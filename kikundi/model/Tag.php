@@ -5,7 +5,14 @@
  */
 class Tag {
 
+    /**
+     * id zur Identifikation der Tags welche individuell ist
+     */
     private $id;
+
+    /**
+     * Name des Tags
+     */
     private $name;
 
     public function __construct($name)

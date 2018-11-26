@@ -3,15 +3,31 @@
 require_once 'interfaces/MemberImpl.php';
 
 /**
- * Class Member
+ * Class Member für die Repräsentation eines Mitglieds
  * @author ramsi 05.11.18
  *
  */
 class Member implements MemberImpl{
 
+    /**
+     * id welche individuell für jeden Member ist
+     */
     private $id;
+
+    /**
+     * name des Members für Anzeigen, etc.
+     */
     private $name;
+
+    /**
+     * die SessionID des Members
+     */
     private $sessionId;
+
+    /**
+     * Die Rolle des Members, welche mit Berechtigungen ausgestattet werden kann
+     * momentan nur admin und user vorhanden
+     */
     private $role;
 
     public function __construct($id, $name, $sessionId, $role){

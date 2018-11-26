@@ -10,10 +10,29 @@ require_once 'Member.php';
 class ProjectPool implements ProjectPoolImpl
 {
 
+    /**
+     * id des Pools die indiviuell ist
+     */
     private $id;
+
+    /**
+     * name des Pools
+     */
     private $name;
+
+    /**
+     * Liste der Projekte in diesem Pool
+     */
     private $projects;
+
+    /**
+     * Variable welchen den Administrator (Gründer) dieses Pools hält
+     */
     private $admin;
+
+    /**
+     * Wer alles diesen Pool gejoined hat
+     */
     private $members;
 
 
