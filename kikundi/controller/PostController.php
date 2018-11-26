@@ -2,12 +2,24 @@
 
 require_once('../ProjectController.php');
 
-
+    /**
+     * Controller class to administrate and facilitate all POST-requests
+     */
     class PostController {
-
+        /**
+         * Standard-URL under which the dispatcher can be found
+         */
         private $DISPATCHER_URL = "../view/src/";
+
+        /**
+         * Variable to store arguments provided in a GET-Request
+         */
         private $provided;
 
+        /**
+         * Store something into the $provided-Variable to
+         * make a POST afterwards
+         */
         public function setPost($provided) {
             $this->provided = $provided;
         }
@@ -55,10 +67,16 @@ require_once('../ProjectController.php');
 
         }
 
+        /**
+         * Create a new ProjectPool from a request
+         */
         private function createProjectPool() {
-
+            //TODO
         }
 
+        /**
+         * create a new Project in a Pool
+         */
         private function createProject() {
 
             require_once('../ProjectController.php');
@@ -82,6 +100,10 @@ require_once('../ProjectController.php');
             }
         }
 
+
+        /**
+         * A member can join an existing ProjectPool with this function
+         */
         private function joinProjectPool() {
 
             $hashCode = $this->provided['hashCode'];
@@ -95,6 +117,9 @@ require_once('../ProjectController.php');
             header("Location: " . $this->DISPATCHER_URL . "homeuser");
         }
 
+        /**
+         * A memeber can like a Project in a Pool
+         */
         private function likeProject() {
             foreach (ProjectController::getAllPools() as $pool) {
                 $member = $pool->isMemberBySessionID($this->provided['sessionID']);
@@ -112,6 +137,9 @@ require_once('../ProjectController.php');
 
         }
 
+        /**
+         * The admin can approve members into the pool or for a project
+         */
         private function approve() {
 
         }
