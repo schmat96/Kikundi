@@ -43,6 +43,8 @@ class Dispatcher
      */
     public function displayRequestedPage($url) {
         $requestedPage = explode('/', $url)[$this->pathDepth];
+        $requestedPage2 = explode('?', $requestedPage)[0];
+        echo $requestedPage2;
         // pretty important
         // todo 1: add remaining/missing pages
         // todo 2: add correct requested url in form (html)
@@ -52,7 +54,7 @@ class Dispatcher
         // todo 4: improve naming and path selection
 
 
-        switch(strtolower($requestedPage)) {
+        switch(strtolower($requestedPage2)) {
             case 'homeadmin':
                 $this->writeHtml('../../view/src/admin/home.template.html');
                 break;
@@ -82,4 +84,9 @@ class Dispatcher
     public function getHtml(){
         return $this->html;
     }
+}
+
+foreach($_GET as $key => $value)
+{
+    setcookie($key, $value);
 }

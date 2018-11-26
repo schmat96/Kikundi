@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <script src="../script.js"></script>
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Hello, world!</title>
@@ -13,6 +14,7 @@
 <body>
 
 <?php
+
  require_once '../../controller/Dispatcher.php';
  $dispatcher = new Dispatcher(5);
  $dispatcher->displayRequestedPage($_SERVER['REQUEST_URI'])?>

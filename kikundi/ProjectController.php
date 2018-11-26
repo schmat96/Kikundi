@@ -10,7 +10,6 @@ require_once 'model/Project.php';
 session_id(100);
 session_start();
 
-
 class ProjectController {
 
     /**
@@ -95,7 +94,9 @@ class ProjectController {
 		if (empty($_SESSION['allPools'])) {
             $_SESSION['allPools'] = array();
 		}
-        array_push($_SESSION['allPools'], new ProjectPool($sessid, $name, $adminName));
+        $projectpool = new ProjectPool($sessid, $name, $adminName);
+        array_push($_SESSION['allPools'], $projectpool);
+        header("Location: ../../kikundi/view/src/homeadmin?projectpoolname=".$projectpool->getAdmin()->getHashCode());
 	}
 	
 	public static function getPoolByID($id)
