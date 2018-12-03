@@ -106,11 +106,11 @@ class ProjectController {
 	 * Add a projectpool to all the pools in the
 	 * global array $GLOBALS['allPools']
 	 */
-    public static function addProjectPool($sessid, $name, $adminName) {
+    public static function addProjectPool($sessid, $adminName) {
 		if (empty($_SESSION['allPools'])) {
             $_SESSION['allPools'] = array();
 		}
-        $projectpool = new ProjectPool($sessid, $name, $adminName);
+        $projectpool = new ProjectPool($sessid,"ProjectName", $adminName);
         array_push($_SESSION['allPools'], $projectpool);
         header("Location: /Kikundi/kikundi/view/src/homeadmin?projectpool=".$projectpool->getAdmin()->getHashCode());
 	}
