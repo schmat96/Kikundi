@@ -1,4 +1,8 @@
 <?php
+/**
+* author: Sven Zioerjen
+* date: 05.11.2018
+*/
 session_id(100);
 session_start();
 require_once "functions.php";

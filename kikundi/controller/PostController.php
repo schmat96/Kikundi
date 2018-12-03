@@ -1,5 +1,8 @@
 <?php
-
+/**
+* author: Keya Kersting
+* date: 05.11.2018
+*/
 require_once('../ProjectController.php');
 
     /**
@@ -21,6 +24,10 @@ require_once('../ProjectController.php');
             $this->provided = $provided;
         }
 
+        public function getProvided() {
+            return $this->provided;
+        }
+
 
         /**
          * Chooses what to do with the provided postLabel value.
@@ -28,11 +35,11 @@ require_once('../ProjectController.php');
          */
         public function chooseFunction(){
             if (isset($this->provided['postLabel'])) {
-                echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it for yourself 
+                echo "You called the function <b> ".$this->provided['postLabel']." </b> if you need to know what this shit does follow it for yourself
                 in kikundi/controller/PostController.php <br>";
                 switch($this->provided['postLabel']){
                     case 'createProjectPool':
-                        ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['adminName']);
+                        ProjectController::addProjectPool($this->provided['sessionID'], $this->provided['name'], $this->provided['adminName']);
                         setcookie('newCook', '69', 2019-9-11, '/');
                         break;
                     case 'registerMember':
@@ -145,8 +152,9 @@ require_once('../ProjectController.php');
 /**
  * This will call the PostController and set the Provided Array (either GET or POST)
  */
-$pc = new PostController($provided);
+
+$pc = new PostController();
 $pc->setPost($_GET);
 $pc->chooseFunction();
-    
+
 ?>

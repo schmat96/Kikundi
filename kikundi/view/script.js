@@ -1,4 +1,7 @@
-
+/**
+* author: Florian Moser
+* date: 05.11.2018
+*/
 //Sets a cookie, which exists until you either set it ="" or you close the website/browser
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + "; path=/";

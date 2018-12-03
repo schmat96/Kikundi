@@ -1,4 +1,9 @@
 <?php
+
+/**
+* author: Kevin Looser
+* date: 18.11.2018
+*/
     require_once 'testing/Test.php';
     require_once 'controller/Dispatcher.php';
 

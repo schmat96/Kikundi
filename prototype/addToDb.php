@@ -1,4 +1,8 @@
 <?php
+/**
+* author: Sven Zioerjen
+* date: 05.11.2018
+*/
 
 $servername = "localhost";
 $username = "root";
@@ -24,4 +28,3 @@ if ($conn->query($sql) === TRUE) {
 
 header('Location: ../index.php')
 ?>
-

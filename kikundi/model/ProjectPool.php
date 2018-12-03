@@ -1,5 +1,8 @@
 <?php
-
+/**
+* author: Kevin Looser
+* date: 05.11.2018
+*/
 require_once 'interfaces/ProjectPoolImpl.php';
 require_once 'Member.php';
 
@@ -126,12 +129,13 @@ class ProjectPool implements ProjectPoolImpl
      */
     public function registerMember($member, $hashCode)
     {
+
         if($this->getAdmin()->getHashCode() == $hashCode)
         {
             array_push($this->members, $member);
             return true;
         }
-        
+
         return false;
     }
 }
