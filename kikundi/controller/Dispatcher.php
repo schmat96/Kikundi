@@ -16,6 +16,9 @@ class Dispatcher
      */
     private $pathDepth = 5;
 
+    /**
+    * for seprarating multiple project in the string
+    */
     private $cookieDelimiter = '&';
 
     /**
@@ -23,6 +26,9 @@ class Dispatcher
      */
     private $html = '';
 
+    /**
+    * Variable to hold the projectpool
+    */
     private $projectpool;
 
     /**
