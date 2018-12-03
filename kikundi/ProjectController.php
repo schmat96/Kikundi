@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+* author: Sven Zioerjen
+* date: 05.11.2018
+*/
 
 require_once 'model/ProjectPool.php';
 require_once 'controller/TagController.php';
@@ -101,7 +104,7 @@ class ProjectController {
 		}
 		return $_SESSION['allPools'];
 	}
-	
+
 	/**
 	 * Add a projectpool to all the pools in the
 	 * global array $GLOBALS['allPools']
@@ -114,7 +117,7 @@ class ProjectController {
         array_push($_SESSION['allPools'], $projectpool);
         header("Location: /Kikundi/kikundi/view/src/homeadmin?projectpool=".$projectpool->getAdmin()->getHashCode());
 	}
-    
+
     /**
      * get a pool which has an id matching the provided id
      */
@@ -123,7 +126,7 @@ class ProjectController {
 		if (empty($_SESSION['allPools'])) {
             $_SESSION['allPools'] = array();
 		}
-		
+
 		foreach($_SESSION['allPools'] as $pool)
 		{
 			if($pool->hasID($id))
