@@ -1,6 +1,11 @@
 <?php
 
 /**
+* created by Mathias Schmid
+* created: 10.11.2018
+*/
+
+/**
  * Runnerfile to run tests
  */
     if ($_GET['testing']=='reset') {

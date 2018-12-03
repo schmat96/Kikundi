@@ -1,5 +1,10 @@
 <?php
 
+/**
+* created by Matthias Ramseier
+* created: 05.11.2018
+*/
+
 require_once 'interfaces/MemberImpl.php';
 
 /**
